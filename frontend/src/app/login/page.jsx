@@ -1,22 +1,39 @@
 'use client'
+import axios from 'axios';
 import { useFormik } from 'formik'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React from 'react'
+import toast from 'react-hot-toast';
 
 const Login = () => {
-  // Initializing formik
+  const router = useRouter();
+
   const signupForm = useFormik({
     initialValues: {
-      name: '',
       email: '',
       password: '',
-      confirmPassword: ''
     },
-    onSubmit: (value) => {
-      console.log(value)
-    }
-  })
-  
+    onSubmit: (values, { resetForm, setSubmitting }) => {
+      axios
+        .post('http://localhost:5000/user/authenticate', values)
+        .then((res) => {
+          toast.success('Logged in successfully!');
+          console.log(res)
+          localStorage.setItem('email', res.data.email);
+          localStorage.setItem('name', res.data.name);
+          localStorage.setItem('src', res.data.profileImage);
+          localStorage.setItem('token', res.data.token);
+          window.location.replace("/")
+          resetForm();
+        })
+        .catch((err) => {
+          console.error(err);
+          toast.error('Invalid username or password.');
+          setSubmitting(false);
+        });
+    },
+  });
   return (
     <div className="min-h-screen flex">
       <div
@@ -33,7 +50,7 @@ const Login = () => {
             Not Registered?
             <Link
               className="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500"
-              href="/signup"
+              href="/sign-up"
             >
               Sign up
             </Link>
@@ -79,22 +96,6 @@ const Login = () => {
           <form onSubmit={signupForm.handleChange}>
             <div className="grid gap-y-4">
               {/* Form Group */}
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm mb-2 dark:text-white"
-                >
-                  Full name:
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  onChange={signupForm.handleChange}
-                  value={signupForm.values.name}
-                  className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600"
-                  required
-                />
-              </div>
               <div>
                 <label
                   htmlFor="email"
