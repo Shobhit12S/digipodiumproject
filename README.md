@@ -2,7 +2,9 @@ Property Dealing Website 🏡
 
 A full-stack MERN web application for property listing, buying, and selling. Users can browse properties, create accounts, post listings, and contact sellers.
 
-Screenshots.png
+📸 Project Screenshot-
+
+
 
 Features-
 
