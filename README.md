@@ -4,7 +4,7 @@ A full-stack MERN web application for property listing, buying, and selling. Use
 
 📸 Project Screenshot-
 
-
+Screenshot(10).png
 
 Features-
 
