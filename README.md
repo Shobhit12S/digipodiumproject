@@ -4,7 +4,7 @@ A full-stack MERN web application for property listing, buying, and selling. Use
 
 📸 Project Screenshot-
 
-![image alt](Screenshot (10).png)
+![Property Screenshot]..(Screenshot(10).png)
 Features-
 
 ✔ User authentication (Sign-up, Login, JWT-based Auth)
