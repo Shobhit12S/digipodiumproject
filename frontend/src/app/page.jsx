@@ -83,7 +83,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className='flex flex-wrap justify-around p-5 gap-10'>
+      <section className='grid grid-wrap justify-around p-5 gap-5'>
         {filteredProperties.map((property) => (
           <Card key={property._id} property={property} />
         ))}
