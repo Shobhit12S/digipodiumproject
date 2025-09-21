@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "./components/navbar";
+import Navbar from './components/Navbar';
 import { Toaster } from "react-hot-toast";
 import Footer from "./components/Footer";
 
