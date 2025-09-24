@@ -19,7 +19,7 @@ const Footer = () => {
         {/* End Col */}
         <div className="mt-3">
           <p className="text-gray-500 dark:text-neutral-500">
-            We're part of the{" "}
+            We&apos;re part of the{" "}
             <a
               className="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500"
               href="#"

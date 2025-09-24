@@ -7,21 +7,21 @@ const BrowseProperties = () => {
 
     const [propertyList, setPropertyList] = useState([]);
     const [masterList, setMasterList] = useState([]);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
     const fetchProperties = async () => {
+ async function fetchProperties() {
+  console.log("Fetching from:", `${apiUrl}/property/getall`);
+  
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-    console.log("Fetching from:", `${apiUrl}/property/getall`);
-
     const res = await axios.get(`${apiUrl}/property/getall`);
-
     setPropertyList(res.data);
     setMasterList(res.data);
   } catch (error) {
-    // Safe error logging
-    console.error("Error fetching properties:", error && error.message ? error.message : error);
+    console.error("Error fetching properties:", error instanceof Error ? error.message : error);
   }
-};
+}
+    };
 
 
 
